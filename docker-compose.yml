@@ -2,10 +2,8 @@ version: "3.3"
 
 services:
   redis:
-    container_name: ok-photos-redis
     image: redis:5.0.3-alpine
   redis_manager:
-    container_name: ok-photos-redis-commander
     image: ficusio/redis-commander
     command: ficusio/redis-commander --redis-host redis --redis-port 6379
     ports:
