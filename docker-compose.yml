@@ -16,8 +16,8 @@ services:
     command: npm start
     ports:
       - 8080:3000
-    volumes:
-      - .:/ok-downloader-app/
+    # volumes:
+    #   - .:/ok-downloader-app/
     depends_on:
       - redis
     env_file:

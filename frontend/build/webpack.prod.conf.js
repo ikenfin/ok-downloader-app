@@ -20,13 +20,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       sourceMap: config.build.productionSourceMap,
       extract: true,
       usePostCSS: true
-    }),
-    loaders: [
-      {
-        test: /\.jade$/,
-        loader: 'jade'
-      }
-    ]
+    })
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
@@ -73,7 +67,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     // }),
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: 'index.jade',
+      template: 'index.pug',
       inject: false,
       minify: {
         removeComments: true,
