@@ -1,4 +1,4 @@
-const uuid = require('node-uuid')
+const uuidv4 = require('uuid/v4')
 const EVENT_DEL = 'user:deleted'
 
 module.exports = (app, client) => {
@@ -19,7 +19,6 @@ module.exports = (app, client) => {
   client.on('logout', () => {
     if (client.authData) {
       const uid = client.authData.id;
-      console.log('logotutututut')
       helpers.logout(uid)
       client.disconnect()
     }
@@ -61,7 +60,7 @@ module.exports = (app, client) => {
           job.queue.on('global:completed', (id, result) => {
             if (job.id === id) {
               const { zipPath } = JSON.parse(result)
-              const uniqKey = uuid.v4()
+              const uniqKey = uuidv4()
 
               redis.del(`users:active-bull:${uid}`)
 
