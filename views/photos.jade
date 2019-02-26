@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Скачано...
+  each obj, index in data
+    each photos, title in obj
+      h3= title
+      each photo in photos
+        img(src='#{photo.pic128x128}')
+      hr

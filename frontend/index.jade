@@ -1,0 +1,3 @@
+<% htmlWebpackPlugin.files.css.forEach(function(item) { %>link(href="<%= item %>" rel="stylesheet")<% }); %>
+<% htmlWebpackPlugin.files.js.forEach(function(item) { %>script(src="<%= item %>" type="text/javascript")
+<% }); %>

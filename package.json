@@ -1,0 +1,34 @@
+{
+  "name": "ok-downloader-app",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "postinstall": "cd frontend && npm install && npm run build --prod",
+    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www --ignore frontend"
+  },
+  "dependencies": {
+    "bull": "^3.6.0",
+    "connect-redis": "^3.4.0",
+    "debug": "~2.6.9",
+    "download-file": "^0.1.5",
+    "express": "~4.16.0",
+    "express-jwt": "^5.3.1",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "ioredis": "^4.5.1",
+    "jade": "~1.11.0",
+    "mkdirp": "^0.5.1",
+    "morgan": "~1.9.0",
+    "node-uuid": "^1.4.8",
+    "node-zip": "^1.1.1",
+    "ok.ru": "^1.2.0",
+    "request": "^2.88.0",
+    "rimraf": "^2.6.3",
+    "socket.io": "^2.2.0",
+    "socketio-auth": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}

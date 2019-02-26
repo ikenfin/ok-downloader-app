@@ -1,0 +1,9 @@
+extends layout
+
+block header
+  script
+    | localStorage.setItem("okd-token", "#{token}")
+    | location = "#{redirect}"
+
+block content
+  h1 PROCESSING...

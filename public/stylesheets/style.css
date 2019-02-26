@@ -1,0 +1,69 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #F7931E;
+}
+
+h1 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #F7931E;
+}
+
+.main-container {
+  max-width: 1080px;
+  margin: auto;
+}
+
+.okd-copyright {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 4em 0;
+}
+.okd-copyright img {
+  max-width: 200px;
+  border: none;
+}
+
+.okd-container {
+  font-size: 1.4em;
+  padding: 1em 2em;
+  border: 2px solid #F7931E;
+  border-radius: 10px;
+  margin: 2em 0;
+}
+.okd-login-container {
+
+}
+
+.btn-auth {
+  color: #F7931E;
+  text-decoration: none;
+  border: 2px solid #F7931E;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: flex;
+  max-width: 180px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  transition: all .3s ease;
+}
+.btn-auth:hover {
+  background-color: #F7931E;
+  color: #fff;
+}
+
+.btn-auth img {
+  max-width: 30px;
+}

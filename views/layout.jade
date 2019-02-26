@@ -1,0 +1,20 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block header
+  body
+    .main-container
+      h1
+        a(href="/") Скачиватель фотографий (Одноклассники)
+      hr
+
+      block content
+
+      div.okd-copyright
+        a(href="https://codeville.ru" target="_blank")
+          img(src="images/cv.png")
+        a(href="/policy" target="_blank") Политика конфиденциальности
+
+      block footer
