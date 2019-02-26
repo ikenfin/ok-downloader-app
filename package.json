@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "postinstall": "cd frontend && npm install && npm run build --prod",
+    "postinstall": "cd ./frontend && npm install && npm run build --prod",
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www --ignore frontend"
   },
