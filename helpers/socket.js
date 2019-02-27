@@ -1,16 +1,19 @@
 const clearUserData = require('./cleaner')
 
-module.exports = (app, client) => {
+module.exports = (app, _client) => {
   return {
+    // on logout - clean data and remove user
     logout (uid) {
       // console.log('logout helper...', uid)
       clearUserData(app.get('redis'), app.get('downloads-path'), uid)
-        // .then(() => {
-        //   client.to(`user:${uid}`).emit('logout:complete', { ok: 'ok' })
-        // })
-        // .catch(err => {
-        //   console.error('errror:', err)
-        // })
+        .then(() => {
+          console.log('clear user data (helper)', new Date())
+          const pipeline = app.get('redis').pipeline()
+          pipeline.del(`users:${uid}`)
+          pipeline.zrem('users-refresh', uid)
+          pipeline.publish('user:deleted', uid)
+          return pipeline.exec()
+        })
     }
   }
 }
