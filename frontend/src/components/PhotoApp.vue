@@ -17,6 +17,7 @@
           <h3 class="b-okdapp__title">Доступные фотоальбомы</h3>
           <button class="b-okdapp__logout" @click.prevent="logout()">Выйти</button>
         </div>
+        <hr>
         <div class="b-okdapp__btn_panel">
           <button class="b-okdapp__download" @click.prevent="downloadAll()">
             Скачать все
@@ -121,7 +122,8 @@ $gray-clr: #A1A1A1;
 
 hr {
   border: none;
-  border-bottom: 1px solid $ok-clr;
+  border-bottom: 2px solid $ok-clr;
+  // margin: 1em 0 4em
 }
 
 h3 {
@@ -129,8 +131,6 @@ h3 {
 }
 
 .b-okdapp {
-  font-family: 'PT Sans';
-
   &__link {
     color: $ok-clr;
     font-weight: bold;
@@ -160,6 +160,7 @@ h3 {
     margin: 2em 0;
     border: 2px solid $ok-clr;
     padding: 1em;
+    border-radius: 6px;
   }
 
   &--loading {
@@ -197,12 +198,16 @@ h3 {
   border: 2px solid $logout-clr;
   border-radius: 10px;
   padding: 10px 20px;
-  font-size: 1.1em;
+  font-size: .9em;
   text-align: center;
   transition: background-color .3s ease,
               color .3s ease;
   color: #fff;
   background: $logout-clr;
+  font-weight: lighter;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+
   &:hover {
     background-color: lighten($logout-clr, 10%);
   }
@@ -216,7 +221,8 @@ h3 {
   text-align: center;
   transition: background-color .3s ease,
               color .3s ease;
-
+  text-transform: uppercase;
+  font-weight: lighter;
   $ctx: #{&};
 
   &:hover {

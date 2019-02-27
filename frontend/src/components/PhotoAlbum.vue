@@ -73,14 +73,14 @@ $gray-clr: #A1A1A1;
 
   &__title {
     margin: 0;
-    font-weight: normal;
+    font-weight: lighter;
   }
 
   &__count {
     display: block;
     margin-top: 6px;
     font-size: .7em;
-    font-weight: 300;
+    font-weight: lighter;
     color: $gray-clr;
   }
 
@@ -109,9 +109,11 @@ $gray-clr: #A1A1A1;
       border: none;
       outline: none;
       padding: 10px 5px;
-      font-size: .8em;
+      font-size: .9em;
       transition: background-color .3s ease,
                   color .3s ease;
+      text-transform: uppercase;
+      font-weight: lighter;
 
       &:hover {
         color: #fff;
