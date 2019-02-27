@@ -31,16 +31,19 @@ module.exports = (app) => {
         })
         .then(({ id, access_token, refresh_token, expires_in }) => {
           const downloadPath = path.join(app.get('downloads-path'), id)
+          const time = Date.now()
 
-          return app.get('redis')
-            .hmset(`users:${id}`, {
-              id,
-              access_token,
-              refresh_token,
-              expires_in,
-              downloadPath
-            })
-            .then(() => app.get('jwt').sign({ id }))
+          const pipeline = app.get('redis').pipeline()
+          pipeline.zadd('users-refresh', time + (expires_in * 1000), id)
+          pipeline .hmset(`users:${id}`, {
+            id,
+            access_token,
+            refresh_token,
+            expires_in,
+            downloadPath
+          })
+
+          return pipeline.exec().then(() => app.get('jwt').sign({ id }))
         })
         .then((token) => {
           res.render('jwt', {
