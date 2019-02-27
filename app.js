@@ -18,13 +18,17 @@ app.set('redis', redisClient)
 app.set('redis-sub', redisSubscriber)
 
 app.set('jwt', jwt(app));
+app.set('jwt-secret-key', secret.get('jwt-secret-key'));
+
+app.set('downloads-path', path.join(__dirname, '../ok-downloader-data/downloads'));
 
 var Downloader = require('./downloader')({
   redis: {
     host: REDIS_HOST,
     port: REDIS_PORT
     // client: redisClient
-  }
+  },
+  downloadsPath: app.get('downloads-path')
 });
 
 Downloader.queue.empty().then(() => {
@@ -37,17 +41,11 @@ app.set('view engine', 'pug');
 
 app.set('network-keys', {
   odnoklassniki: {
-    applicationSecretKey: secret.get('ok_secret_key'), //'AAC5EC8B2BE7D9855F4BE966',
-    applicationKey: secret.get('ok_public_key'), //'CBAEBEJLEBABABABA',
-    applicationId: secret.get('ok_app_id') //'1251152640'
+    applicationSecretKey: secret.get('ok_secret_key'),
+    applicationKey: secret.get('ok_public_key'),
+    applicationId: secret.get('ok_app_id')
   }
 });
-
-const mkdirp = require('mkdirp');
-
-app.set('downloads-path', path.join(__dirname, 'downloads'));
-
-mkdirp.sync(app.get('downloads-path'), 0777);
 
 var indexRouter = require('./routes/index')(app);
 
@@ -59,12 +57,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function(_req, _res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function(err, req, res) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
