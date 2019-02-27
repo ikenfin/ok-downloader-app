@@ -10,7 +10,7 @@ module.exports = function(app) {
     const { uuid, uid } = req.params
 
     if (!uuid || !uid) {
-      res.status(403).render({
+      res.status(403).render('error', {
         message: 'Not authorized'
       })
     }
