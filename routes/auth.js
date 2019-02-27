@@ -3,20 +3,21 @@ module.exports = (app) => {
   const router = express.Router();
   const okApi = require('../helpers/ok')(app.get('network-keys').odnoklassniki);
 
-  const mkdirp = require('mkdirp'),
-        path = require('path');
+  const path = require('path');
 
   router.get('/', function(req, res) {
-    res.redirect(okApi.getAuthUrl('http://localhost:8080/auth/ok'));
+    const returnUrl = `${req.protocol}://${req.get('host')}/auth/ok`
+    res.redirect(okApi.getAuthUrl(returnUrl));
   });
 
-  router.get('/logout', (req, res) => {
+  // router.get('/logout', (req, res) => {
     // app.get('socket').emit('logout')
-  });
+  // });
 
   router.get('/ok', function(req, res) {
+    const returnUrl = `${req.protocol}://${req.get('host')}/auth/ok`
     let code = req.query.code;
-    let tokenPromise = okApi.auth(code, 'http://localhost:8080/auth/ok');
+    let tokenPromise = okApi.auth(code, returnUrl);
 
     tokenPromise
       .then(async (auth_data) => {
@@ -29,8 +30,6 @@ module.exports = (app) => {
       })
       .then(({ id, access_token, refresh_token, expires_in }) => {
         const downloadPath = path.join(app.get('downloads-path'), id)
-        // mkdirp.sync(downloadPath)
-        // req.session.uid = id
 
         return app.get('redis')
           .hmset(`users:${id}`, {
