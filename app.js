@@ -18,7 +18,7 @@ app.set('redis', redisClient)
 app.set('redis-sub', redisSubscriber)
 
 app.set('jwt', jwt(app));
-app.set('jwt-secret-key', secret.get('jwt-secret-key'));
+app.set('jwt-secret-key', secret.get('ok_jwt_secret_key'));
 
 app.set('downloads-path', path.join(__dirname, '../ok-downloader-data/downloads'));
 
