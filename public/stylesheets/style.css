@@ -1,12 +1,17 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 25px;
+  font-size: 14px;
+  font-family: Segoe UI, WeblySleek UI, sans-serif;
 }
 
 a {
   color: #F7931E;
 }
 
+h1 {
+  font-size: 1.2em;
+  text-align: center;
+}
 h1 a {
   color: inherit;
   text-decoration: none;
@@ -66,4 +71,51 @@ hr {
 
 .btn-auth img {
   max-width: 30px;
+}
+
+@media screen and (min-width: 767px) {
+  h1 {
+    font-size: 2em;
+    text-align: left;
+  }
+  button {
+    padding: .75em 1.25em;
+  }
+}
+
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Light'), local('WeblySleekUILight'), url('../fonts/weblysleekuilight.woff2') format('woff2'), url('../fonts/weblysleekuilight.woff') format('woff'), url('../fonts/weblysleekuilight.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Light Italic'), local('WeblySleekUILight-Italic'), url('../fonts/weblysleekuilightitalic.woff2') format('woff2'), url('../fonts/weblysleekuilightitalic.woff') format('woff'), url('../fonts/weblysleekuilightitalic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Semilight'), local('WeblySleekUISemilight'), url('../fonts/weblysleekuisemilight.woff2') format('woff2'), url('../fonts/weblysleekuisemilight.woff') format('woff'), url('../fonts/weblysleekuisemilight.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Semilight Italic'), local('WeblySleekUISemilight-Italic'), url('../fonts/weblysleekuisemilightitalic.woff2') format('woff2'), url('../fonts/weblysleekuisemilightitalic.woff') format('woff'), url('../fonts/weblysleekuisemilightitalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Semibold'), local('WeblySleekUISemibold'), url('../fonts/weblysleekuisemibold.woff2') format('woff2'), url('../fonts/weblysleekuisemibold.woff') format('woff'), url('../fonts/weblysleekuisemibold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'WeblySleek UI';
+  src: local('WeblySleek UI Semibold Italic'), local('WeblySleekUISemibold-Italic'), url('../fonts/weblysleekuisemibolditalic.woff2') format('woff2'), url('../fonts/weblysleekuisemibolditalic.woff') format('woff'), url('../fonts/weblysleekuisemibolditalic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
 }
