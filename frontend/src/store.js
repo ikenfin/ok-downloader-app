@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { genVuexModels } from 'vuex-models'
-
 import io from 'socket.io-client'
 
 const IOPlugin = {
   async install (Vue, _opts) {
     const socket = io({
-      path: '/socket'
+      path: '/socket',
+      reconnection: true
     })
+
     Vue.$socket = socket
   }
 }
@@ -38,13 +39,12 @@ const store = new Vuex.Store({
     downloadUrl: null,
     downloadProgress: 0,
     downloadInProgress: false
-    // auth: false,
-    // token: ''
   },
   actions: {
     authenticate ({ commit }, token) {
       commit('SET_AUTH_PENDING')
       Vue.$socket.emit('authentication', token)
+
       Vue.$socket.on('authenticated', (id) => {
         if (id === false) {
           console.error('reauth...')
@@ -57,13 +57,14 @@ const store = new Vuex.Store({
         commit('UNSET_AUTH_PENDING')
         commit('LOGOUT')
       })
-      Vue.$socket.on('disconnect', () => {
-        commit('RESET_AUTH_DATA')
-        commit('SET_AUTH_PENDING')
+
+      Vue.$socket.on('reconnect', () => {
         Vue.$socket.emit('authentication', token)
       })
     },
-    logout () {
+    logout ({ commit }) {
+      commit('RESET_AUTH_DATA')
+      commit('SET_AUTH_PENDING')
       Vue.$socket.emit('logout')
     },
     async download ({ commit }, request) {
@@ -72,12 +73,10 @@ const store = new Vuex.Store({
       commit('SET_DOWNLOAD_PROGRESS', 0)
 
       Vue.$socket.on('download:progress', (percent) => {
-        console.log('download', percent)
         commit('SET_DOWNLOAD_PROGRESS', percent)
       })
 
       Vue.$socket.on('download:complete', (job) => {
-        console.log(job)
         commit('UNSET_DOWNLOAD_PENDING')
         commit('SET_DOWNLOAD_COMPLETE', job.downloadUrl)
       })
