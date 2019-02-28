@@ -27,6 +27,15 @@ hr {
   margin: auto;
 }
 
+.okd-site-title img {
+  max-width: 40px;
+  vertical-align: middle;
+  margin: 0 10px 0 0;
+}
+.okd-site-title span {
+  vertical-align: middle;
+}
+
 .okd-copyright {
   display: flex;
   flex-direction: row;
