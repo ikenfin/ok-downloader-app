@@ -37,12 +37,15 @@
       </div>
     </div>
   </div>
-  <div v-else class="b-okdapp b-okdapp--loading">
+  <div v-else-if="authenticateInProgress" class="b-okdapp b-okdapp--loading">
     <div class="b-okdapp__loading_container">
       <p>Odnoklassniki photo downloader</p>
       <p class="b-okdapp__loading_text">auth...</p>
       <img src="../assets/loading.gif" class="b-okdapp__spinner">
     </div>
+  </div>
+  <div v-else>
+
   </div>
 </template>
 
@@ -101,6 +104,11 @@ export default {
 
     if (json.albums) {
       this.albums = json.albums
+    }
+  },
+  mounted () {
+    if (!this.authenticated) {
+      location = '/'
     }
   },
   watch: {
