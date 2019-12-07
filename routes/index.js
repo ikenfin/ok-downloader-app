@@ -42,15 +42,21 @@ module.exports = function(app) {
 
   /* GET home page. */
   router.get('/', function(req, res) {
-    res.render('index')
+    res.render('index', {
+      title: 'Скачать мои фотографии из одноклассников'
+    })
   });
 
   router.get('/policy', function (req, res) {
-    res.render('policy')
+    res.render('policy', {
+      title: 'Политика конфиденциальности'
+    })
   });
 
   router.get('/app', function (req, res) {
-    res.render('app')
+    res.render('app', {
+      title: 'Скачиватель фотографий из одноклассников'
+    })
   });
 
   return router;
