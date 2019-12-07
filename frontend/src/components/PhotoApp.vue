@@ -222,7 +222,7 @@ h3 {
   transition: background-color .3s ease,
               color .3s ease;
   text-transform: uppercase;
-  font-weight: lighter;
+  font-weight: normal;
   $ctx: #{&};
 
   &:hover {

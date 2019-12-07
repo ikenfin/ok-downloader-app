@@ -113,7 +113,7 @@ $gray-clr: #A1A1A1;
       transition: background-color .3s ease,
                   color .3s ease;
       text-transform: uppercase;
-      font-weight: lighter;
+      font-weight: normal;
 
       &:hover {
         color: #fff;
