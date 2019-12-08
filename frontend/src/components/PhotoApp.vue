@@ -45,7 +45,11 @@
     </div>
   </div>
   <div v-else>
-
+    <p>Не удалось авторизоваться через "Одноклассники", попробуйте снова</p>
+    <a href="/auth" class="btn-auth">
+      Войти с помощью
+      <img src="/images/ok.png" />
+    </a>
   </div>
 </template>
 
@@ -104,11 +108,6 @@ export default {
 
     if (json.albums) {
       this.albums = json.albums
-    }
-  },
-  mounted () {
-    if (!this.authenticated) {
-      location = '/'
     }
   },
   watch: {
